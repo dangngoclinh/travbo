@@ -1,0 +1,120 @@
+/* Landscape tablets and medium desktops */
+@media screen and (max-width: 1200px) {
+    .header-adds {
+        display: none;
+    }
+
+    .header-cart-wrapper {
+        display: none;
+    }
+
+    #main-menu-pull {
+        display: block;
+    }
+
+    #main-nav-wrapper {
+        display: none;
+    }
+
+    #main-content {
+        padding-top: 0;
+    }
+
+    .mf-block-3 .mf-module-1.small.except .mf-module-thumb {
+        padding-bottom: 195px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+
+    .site-branding,
+    #sidebars,
+    #primary,
+    .ft-widget li {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    #main-menu-pull {
+        right: 10px;
+    }
+
+    #sidebars-wrap {
+        padding-top: 20px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media all and (max-width: 768px) {
+    body {
+        font-size: 13px;
+    }
+
+    h2 {
+        font-size: 21px;
+        line-height: 27px;
+    }
+
+    #header {
+        padding-top: 0;
+    }
+
+    .site-branding,
+    #main-nav-wrapper,
+    #primary,
+    #sidebars,
+    .ft-widget li {
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+
+    #main-menu-pull {
+        right: 5px;
+    }
+
+    .mf-module-1 .mf-module-content,
+    .mf-block-2-column .column {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .mf-module-1 .mf-module-content-wrap {
+        position: static;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .mf-module-1 .mf-module-thumb,
+    .mf-module-1.small .mf-module-thumb,
+    .mf-module-1.small.except .mf-module-thumb {
+        padding-bottom: 0 !important;
+    }
+
+    .mf-module-1 .mf-module-social-share {
+        margin-right: 0;
+    }
+
+    .mf-module-2 .post-thumbnail {
+        margin-right: 10px;
+    }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+    h2, h3 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .mf-module-2 .post-thumbnail {
+        width: 35%;
+    }
+
+
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+
+}
