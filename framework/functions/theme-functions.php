@@ -74,46 +74,46 @@ add_filter('comment_form_fields', 'travbo_move_comment_field_to_bottom');
 /**------------------------------------------------------------------------------------------
  * Change Custom excerpt more
  *------------------------------------------------------------------------------------------*/
-function custom_excerpt_more($more)
+function travbo_custom_excerpt_more($more)
 {
     return '....';
 }
 
-add_filter('excerpt_more', 'custom_excerpt_more');
+add_filter('excerpt_more', 'travbo_custom_excerpt_more');
 
 
 /**------------------------------------------------------------------------------------------
  * Set Length Excerpt
  *------------------------------------------------------------------------------------------*/
-function custom_length_excerpt()
+function travbo_custom_length_excerpt()
 {
     return 25;
 }
 
-add_filter('excerpt_length', 'custom_length_excerpt');
+add_filter('excerpt_length', 'travbo_custom_length_excerpt');
 
 
 /**------------------------------------------------------------------------------------------
  * Custom Comment Form Field
  *------------------------------------------------------------------------------------------*/
-function custom_comment_form_field($fields)
+function travbo_custom_comment_form_field($fields)
 {
     $commenter = wp_get_current_commenter();
     $fields = array(
 
         'author' => '<input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) .
-        '" placeholder="Name" />',
+        '" placeholder="' . __('Name', 'travbo') . '" />',
 
         'email' => '<input id="email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) .
-        '" placeholder="Email Address" />',
+        '" placeholder="' . __('Email Address', 'travbo') . '" />',
 
         'url' => '<input id="url" name="url" type="text" value="' . esc_attr($commenter['comment_author_url']) .
-        '" size="30" placeholder="Your Website" />'
+        '" size="30" placeholder="'. __('Your Website', 'travbo') .'" />'
         );
     return $fields;
 }
 
-add_filter('comment_form_default_fields', 'custom_comment_form_field');
+add_filter('comment_form_default_fields', 'travbo_custom_comment_form_field');
 
 
 /**------------------------------------------------------------------------------------------
@@ -144,8 +144,8 @@ function travbo_category_button()
 {
     if (travbo_get_option('category_button')) {
         $category = get_the_category()[0];
-        echo '<a href="' . get_category_link($category->term_id) . '" class="mf-post-category">
-        ' . $category->name . '</a>';
+        echo '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="mf-post-category">
+        ' . esc_html($category->name) . '</a>';
     }
 }
 
@@ -257,7 +257,7 @@ function travbo_copyright()
     ?>
     <div class="copyright fl-left">
         <?php echo travbo_get_option('footer_text'); ?>
-        TravBo theme by <a href="#">MagazineFuse</a>
+        Theme by <a href="#">MagazineFuse</a>
     </div>
     <?php
 }
@@ -315,7 +315,7 @@ function travbo_admin_bar_custom($wp_admin_bar)
 {
     $args = array(
         'id' => 'travbo_theme_options',
-        'title' => 'Theme Options',
+        'title' => __('Theme Options', 'travbo'),
         'href' => admin_url('themes.php?page=optionsframework'),
         'parent' => 'site-name',
         );
@@ -327,64 +327,42 @@ add_action('admin_bar_menu', 'travbo_admin_bar_custom');
 function travbo_header_social_group()
 {
     if (travbo_get_option('social_button_header')) : ?>
-    <div class="header-social-group">
+        <div class="header-social-group">
+            <?php if (travbo_get_option('social_fb')) : ?>
+                <a href="<?php echo travbo_get_option('social_fb'); ?>" class="btn-social social-fb"><i class="fa fa-facebook"></i></a>
+            <?php endif; ?>
+            <?php if (travbo_get_option('social_tw')): ?>
+                <a href="<?php echo travbo_get_option('social_tw'); ?>" class="btn-social social-tw"><i class="fa fa-twitter"></i></a>
+            <?php endif;
+            if (travbo_get_option('social_pt')): ?>
+                <a href="<?php echo travbo_get_option('social_pt'); ?>" class="btn-social social-pt"><i class="fa fa-pinterest"></i></a>
+            <?php endif; ?>
+        </div>
+    <?php endif;
+}
+
+function travbo_social_link_group()
+{
+    if (travbo_get_option('social_fb')) : ?>
+        <a href="<?php echo travbo_get_option('social_fb'); ?>" class="btn-social social-fb"><i class="fa fa-facebook"></i></a>
+    <?php endif;
+        if (travbo_get_option('social_tw')): ?>
+        <a href="<?php echo travbo_get_option('social_tw'); ?>" class="btn-social social-tw"><i class="fa fa-twitter"></i></a>
+    <?php endif;
+        if (travbo_get_option('social_pt')): ?>
+        <a href="<?php echo travbo_get_option('social_pt'); ?>" class="btn-social social-pt"><i class="fa fa-pinterest"></i></a>
         <?php
-        if (travbo_get_option('social_fb')) : ?>
-        <a href="<?php echo travbo_get_option('social_fb'); ?>"
-         class="btn-social social-fb"><i
-         class="fa fa-facebook"></i></a>
-         <?php
-         endif;
-         if (travbo_get_option('social_tw')): ?>
-         <a href="<?php echo travbo_get_option('social_tw'); ?>"
-             class="btn-social social-tw"><i
-             class="fa fa-twitter"></i></a>
-             <?php
-             endif;
-             if (travbo_get_option('social_pt')): ?>
-             <a href="<?php echo travbo_get_option('social_pt'); ?>"
-                 class="btn-social social-pt"><i
-                 class="fa fa-pinterest"></i></a>
-                 <?php
-                 endif;
-                 ?>
-             </div>
-             <?php
-             endif;
-         }
+    endif;
+}
 
-         function travbo_social_link_group()
-         {
-            if (travbo_get_option('social_fb')) : ?>
-            <a href="<?php echo travbo_get_option('social_fb'); ?>"
-             class="btn-social social-fb"><i
-             class="fa fa-facebook"></i></a>
-             <?php
-             endif;
-             if (travbo_get_option('social_tw')): ?>
-             <a href="<?php echo travbo_get_option('social_tw'); ?>"
-                 class="btn-social social-tw"><i
-                 class="fa fa-twitter"></i></a>
-                 <?php
-                 endif;
-                 if (travbo_get_option('social_pt')): ?>
-                 <a href="<?php echo travbo_get_option('social_pt'); ?>"
-                     class="btn-social social-pt"><i
-                     class="fa fa-pinterest"></i></a>
-                     <?php
-                     endif;
-                 }
+function travbo_add_style()
+{
+    echo '<style type="text/css">';
+    do_action('travbo_add_style');
+    echo '</style>';
+}
 
-                 function travbo_add_style()
-                 {
-                    ?>
-                    <style type="text/css">
-                        <?php do_action('travbo_add_style');?>
-                    </style>
-                    <?php
-                }
-
-                add_action('wp_head', 'travbo_add_style');
+add_action('wp_head', 'travbo_add_style');
 
 /**------------------------------------------------------------------------------------------
  * Add menu to Admin Bar

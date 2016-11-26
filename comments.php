@@ -11,7 +11,7 @@
                 'style' => 'ul',
                 'short_ping' => true,
                 'avatar_size' => 50,
-                'reply_text' => 'Reply <i class="fa fa-reply"></i>',
+                'reply_text' => __('Reply', 'travbo') .' <i class="fa fa-reply"></i>',
             ));
             ?>
         </ul>
@@ -39,7 +39,7 @@
                 array(
                     'title_reply_before' => '<h3 class="main-block-title">',
                     'title_reply_after' => '</h3>',
-                    'title_reply' => '<span>Leave your comment</span>',
+                    'title_reply' => '<span>' . __('Leave your comment', 'travbo') . '</span>',
 
                 ));
             ?>

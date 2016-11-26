@@ -1,14 +1,14 @@
 <?php
 
-class mf_about_me_widget extends WP_Widget
+class travbo_about_me_widget extends WP_Widget
 {
     public function __construct()
     {
         $widget_ops = array(
-            'classname' => 'mf_about_me_widget',
+            'classname' => 'travbo_about_me_widget',
             'description' => __('Widget About Me', 'travbo'),
         );
-        parent::__construct('mf_about_me_widget', THEME_NAME . ' - ' . __('About Me', 'travbo'), $widget_ops);
+        parent::__construct('travbo_about_me_widget', THEME_NAME . ' - ' . __('About Me', 'travbo'), $widget_ops);
 
         add_action('admin_enqueue_scripts', array($this, 'register_scripts'));
     }
@@ -113,7 +113,7 @@ class mf_about_me_widget extends WP_Widget
                    name="<?php echo $this->get_field_name('background'); ?>" type="text"
                    value="<?php echo esc_attr($instance['background']); ?>">
             <input class="btn-upload-background-about-me-widget button button-primary" type="button"
-                   value="Upload Image"/>
+                   value="<?php _e('Upload Image', 'travbo'); ?>"/>
         </p>
         <?php
     }
@@ -125,8 +125,8 @@ class mf_about_me_widget extends WP_Widget
     }
 }
 
-function mf_about_me_widget_register()
+function travbo_about_me_widget_register()
 {
-    register_widget('mf_about_me_widget');
+    register_widget('travbo_about_me_widget');
 }
-add_action('widgets_init', 'mf_about_me_widget_register');
+add_action('widgets_init', 'travbo_about_me_widget_register');

@@ -124,7 +124,7 @@ get_header(); ?>
                             <label for="contact_message"></label>
                         <textarea name="contact_message" id="contact_message" rows="10"
                                   placeholder="<?php _e('Message', 'travbo'); ?>"></textarea>
-                            <button type="submit" name="contact_sent" class="button">send now</button>
+                            <button type="submit" name="contact_sent" class="button"><?php _e('send now', 'travbo'); ?></button>
                         </form>
                     </div>
                 </div>
